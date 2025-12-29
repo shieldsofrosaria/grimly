@@ -128,12 +128,14 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             animation: fadeIn 0.3s ease-out;
+            overflow-y: auto;
+            padding: 2rem 0;
         }
 
         .modal.active {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .modal-content {
@@ -144,6 +146,9 @@
             width: 90%;
             border: 2px solid var(--border);
             animation: scaleIn 0.3s ease-out;
+            margin: auto;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
         }
 
         @keyframes scaleIn {
@@ -220,9 +225,9 @@
         }
 
         .app-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            display: inline-block;
             filter: grayscale(100%);
         }
 
@@ -232,6 +237,8 @@
             color: var(--text);
             font-weight: 800;
             letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
         }
 
         .app-description {
@@ -579,8 +586,10 @@
 
             grid.innerHTML = apps.map((app, index) => `
                 <div class="app-card">
-                    <span class="app-icon">${app.icon}</span>
-                    <h3 class="app-title">${app.title}</h3>
+                    <h3 class="app-title">
+                        <span class="app-icon">${app.icon}</span>
+                        ${app.title}
+                    </h3>
                     <p class="app-description">${app.description}</p>
                     ${app.tags && app.tags.length > 0 ? `
                         <div class="app-tags">
