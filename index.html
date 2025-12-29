@@ -6,6 +6,7 @@
     <title>🚀 My Productivity Apps</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
+           @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@400;600;800&display=swap');
         * {
             margin: 0;
             padding: 0;
@@ -45,11 +46,23 @@
         }
 
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
+        .grimly-logo {
+            max-width: 340px;
+            width: 100%;
+            margin: 0 auto 1.2rem;
+            display: block;
+            filter: drop-shadow(0 2px 12px #0008);
+        }
+
+        .subtitle {
+            font-family: 'UnifrakturCook', 'Inter', serif;
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-shadow: 0 2px 8px #000a, 0 1px 0 #2228;
+            margin-bottom: 0.5rem;
+        }
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -388,8 +401,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>🚀 My Productivity Apps</h1>
-            <p class="subtitle">Your personal collection of tools & utilities</p>
+            <img src="https://i.ibb.co/VprDpc8c/grimly-newlogo8-wht.png" alt="Grimly Logo" class="grimly-logo" style="max-width: 340px; width: 100%; margin: 0 auto 1.2rem; display: block; filter: drop-shadow(0 2px 12px #0008);">
+            <p class="subtitle">Productivity Toolkit</p>
         </header>
 
         <div id="setupNotice" class="setup-notice" style="display: none;">
