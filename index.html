@@ -14,14 +14,14 @@
         }
 
         :root {
-            --bg: #0a0a0a;
-            --surface: #1a1a1a;
-            --surface-hover: #2a2a2a;
-            --border: #333333;
-            --text: #ffffff;
-            --text-dim: #888888;
-            --accent: #ffffff;
-            --radius: 12px;
+            --bg: #0a0a0e;
+            --surface: #18181b;
+            --surface-hover: #23232b;
+            --border: #3a2d44;
+            --text: #f8f6ff;
+            --text-dim: #b3a9c7;
+            --accent: #a97ff7;
+            --radius: 14px;
         }
 
         body {
@@ -30,63 +30,63 @@
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
+            position: relative;
+        }
+        body::after {
+            content: '';
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(80,40,120,0.18) 0%, transparent 60%, #000 100%),
+                linear-gradient(180deg, transparent 80%, #18181b 100%),
+                url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+            opacity: 0.85;
+            mix-blend-mode: multiply;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         header {
             text-align: center;
-            margin-bottom: 4rem;
-            padding-top: 2rem;
+            margin-bottom: 1.75rem;
+            padding-top: 1rem;
             animation: slideDown 0.6s ease-out;
         }
 
         @keyframes slideDown {
-        .grimly-logo {
-            max-width: 340px;
-            width: 100%;
-            margin: 0 auto 1.2rem;
-            display: block;
-            filter: drop-shadow(0 2px 12px #0008);
-        }
-
-        .subtitle {
-            font-family: 'UnifrakturCook', 'Inter', serif;
-            font-size: 1.5rem;
-            color: var(--text-dim);
-            font-weight: 700;
-            letter-spacing: 0.01em;
-            text-shadow: 0 2px 8px #000a, 0 1px 0 #2228;
-            margin-bottom: 0.5rem;
-        }
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 1rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
+        .grimly-logo {
+            max-width: 320px;
+            width: 100%;
+            margin: 0 auto 0.65rem;
+            display: block;
+            filter: drop-shadow(0 2px 12px #0008);
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            font-weight: 400;
-        }
+        .subtitle { display: none; }
 
         .controls {
             display: flex;
             gap: 1rem;
             justify-content: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
             animation: fadeIn 0.8s ease-out 0.2s both;
         }
@@ -118,6 +118,34 @@
             background: var(--surface-hover);
             border-color: var(--accent);
             transform: translateY(-1px);
+        }
+
+        .floating-cog {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a22 60%, #24152f 100%);
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            box-shadow: 0 4px 18px #000a;
+            opacity: 0.9;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+            z-index: 1100;
+            line-height: 1;
+            font-size: 1.05rem;
+        }
+
+        .floating-cog:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 24px #a97ff755, 0 3px 12px #000c;
+            opacity: 1;
         }
 
         .btn-primary {
@@ -155,12 +183,14 @@
         }
 
         .modal-content {
-            background: var(--surface);
+            background: linear-gradient(135deg, #18181b 80%, #23232b 100%), url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+            background-blend-mode: multiply;
             padding: 2.5rem;
             border-radius: var(--radius);
             max-width: 600px;
             width: 90%;
-            border: 2px solid var(--border);
+            border: 2.5px solid var(--accent);
+            box-shadow: 0 2px 32px #000c, 0 0 0 2px #a97ff7 inset;
             animation: scaleIn 0.3s ease-out;
             margin: auto;
             max-height: calc(100vh - 4rem);
@@ -229,14 +259,18 @@
             background: var(--surface);
             border-radius: var(--radius);
             padding: 2rem;
-            border: 2px solid var(--border);
+            border: 2.5px solid var(--border);
             transition: all 0.2s ease;
             position: relative;
+            box-shadow: 0 2px 24px #000c, 0 0 0 1.5px #a97ff7 inset;
+            background-image: linear-gradient(135deg, #18181b 80%, #23232b 100%), url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+            background-blend-mode: multiply;
         }
 
         .app-card:hover {
             border-color: var(--accent);
-            transform: translateY(-4px);
+            box-shadow: 0 4px 32px #a97ff7aa, 0 2px 24px #000c;
+            transform: translateY(-4px) scale(1.015);
             background: var(--surface-hover);
         }
 
@@ -248,11 +282,13 @@
         }
 
         .app-title {
-            font-size: 1.5rem;
+            font-family: 'UnifrakturCook', 'Inter', serif;
+            font-size: 1.35rem;
             margin-bottom: 0.5rem;
-            color: var(--text);
+            color: var(--accent);
             font-weight: 800;
-            letter-spacing: -0.02em;
+            letter-spacing: 0.01em;
+            text-shadow: 0 2px 8px #000a, 0 1px 0 #2228, 0 0 2px #a97ff7;
             display: flex;
             align-items: center;
         }
@@ -341,12 +377,18 @@
         }
 
         .setup-notice {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            max-width: 320px;
+            width: calc(100% - 40px);
             background: var(--surface);
-            border: 2px solid var(--border);
+            border: 2px solid var(--accent);
             border-radius: var(--radius);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+            padding: 1rem 1.25rem;
             text-align: center;
+            box-shadow: 0 8px 26px #000c;
+            z-index: 1099;
         }
 
         .setup-notice strong {
@@ -383,6 +425,16 @@
             .modal-content {
                 padding: 1.5rem;
             }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            .app-title {
+                font-size: 1.1rem;
+            }
+            .app-card {
+                padding: 1.2rem;
+            }
         }
 
         /* Subtle grid background */
@@ -406,8 +458,7 @@
 <body>
     <div class="container">
         <header>
-            <img src="https://i.ibb.co/VprDpc8c/grimly-newlogo8-wht.png" alt="Grimly Logo" class="grimly-logo" style="max-width: 340px; width: 100%; margin: 0 auto 1.2rem; display: block; filter: drop-shadow(0 2px 12px #0008);">
-            <p class="subtitle">Productivity Toolkit</p>
+            <img src="https://i.ibb.co/VprDpc8c/grimly-newlogo8-wht.png" alt="Grimly Logo" class="grimly-logo">
         </header>
 
         <div id="setupNotice" class="setup-notice" style="display: none;">
@@ -420,7 +471,6 @@
 
         <div class="controls">
             <button class="btn-primary" onclick="openAddModal()">✨ Add New App</button>
-            <button onclick="showSetup()">⚙️ Setup JSONBin</button>
         </div>
 
         <div id="appsGrid" class="apps-grid">
@@ -434,6 +484,8 @@
         <footer>
             Made with 💜 by <a href="https://github.com/shieldsofrosaria" target="_blank">shieldsofrosaria</a>
         </footer>
+
+        <button class="floating-cog" aria-label="Setup JSONBin" title="Setup JSONBin" onclick="showSetup()">⚙️</button>
     </div>
 
     <!-- Add/Edit Modal -->
